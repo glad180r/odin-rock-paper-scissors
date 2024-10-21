@@ -3,6 +3,8 @@ let humanScore = 0;
 let computerScore = 0;
 
 const resultsDisplay = document.querySelector('.results');
+const humanScoreDisplay = document.querySelector('.human-score');
+const computerScoreDisplay = document.querySelector('.computer-score');
 main()
 
 // Function Declarations
@@ -73,15 +75,23 @@ function playRound(humanChoice){
             ++humanScore; // Increment score for human
         }
     }
+
+    // update the running score at end of each round
+    humanScoreDisplay.textContent = `YOU: ${humanScore}`;
+    computerScoreDisplay.textContent = `COMPUTER: ${computerScore}`;
+
+    const SCORE_TO_END_GAME = 5;
+    if(humanScore === SCORE_TO_END_GAME){
+        resultsDisplay.textContent = 'YOU WON THE GAME!!!'
+    } else if(computerScore === SCORE_TO_END_GAME){
+        resultsDisplay.textContent = 'SORRY! COMPUTER WINS!!!'
+    }
 }
 
 
 
 
 function main(){
-
-
-
     const rockBtn = document.querySelector('.rock-btn');
     rockBtn.addEventListener('click', ()=>{
         playRound('rock');
