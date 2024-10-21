@@ -1,6 +1,8 @@
 // Main Code
 let humanScore = 0;
 let computerScore = 0;
+
+const resultsDisplay = document.querySelector('.results');
 main()
 
 // Function Declarations
@@ -16,16 +18,11 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    return prompt("Rock, Paper or Scissors?").toLowerCase();
-}
 
-
-function playRound(){
+function playRound(humanChoice){
     // Rock beats Scissors
     // Paper beats Rock
     // Scissors beats Paper
-    let humanChoice = getHumanChoice();
     let computerChoice = getComputerChoice();
 
     console.log(`You chose ${humanChoice}`);
@@ -34,11 +31,14 @@ function playRound(){
     if(humanChoice === 'rock'){
         if(computerChoice === 'rock'){
             console.log('Tie round!');
+            resultsDisplay.textContent = 'Tie round!';
         }else if(computerChoice === 'scissors'){
             console.log('You win the round! Rock beats Scissors!');
+            resultsDisplay.textContent = 'You win the round! Rock beats Scissors!';
             ++humanScore; // Increment score for human
         }else if(computerChoice === 'paper'){
             console.log('You lose the round! Paper beats Rock!');
+            resultsDisplay.textContent = 'You lose the round! Paper beats Rock!';
             ++computerScore; // Increment score for computer
         }
     }
@@ -46,12 +46,15 @@ function playRound(){
     if(humanChoice === 'paper'){
         if(computerChoice === 'rock'){
             console.log('You win the round! Paper beats Rock!');
+            resultsDisplay.textContent = 'You win the round! Paper beats Rock!';
             ++humanScore; // Increment score for human
         }else if(computerChoice === 'scissors'){
             console.log('You lose the round! Scissors beats Paper!');
+            resultsDisplay.textContent = 'You lose the round! Scissors beats Paper!';
             ++computerScore; // Increment score for computer
         }else if(computerChoice === 'paper'){
             console.log('Tie round!');
+            resultsDisplay.textContent = 'Tie round!';
         }
     }
 
@@ -59,29 +62,44 @@ function playRound(){
     if(humanChoice === 'scissors'){
         if(computerChoice === 'rock'){
             console.log('You lose the round! Rock beats Scissors!');
+            resultsDisplay.textContent = 'You lose the round! Rock beats Scissors!';
             ++computerScore; // Increment score for computer
         }else if(computerChoice === 'scissors'){
             console.log('Tie round!');
+            resultsDisplay.textContent = 'Tie round!';
         }else if(computerChoice === 'paper'){
             console.log('You win the round! Scissors beats Paper!');
+            resultsDisplay.textContent = 'You win the round! Scissors beats Paper!';
             ++humanScore; // Increment score for human
         }
     }
 }
 
-function playGame(){
-    for(let i=0; i<5; i++){
-        playRound();
-    }
 
-    if(humanScore > computerScore){
-        console.log(`You won the game!`);
-    }else if(computerScore > humanScore){
-        console.log(`You lost the game!`);
-    }
-}
 
 
 function main(){
-    playGame();
+
+
+
+    const rockBtn = document.querySelector('.rock-btn');
+    rockBtn.addEventListener('click', ()=>{
+        playRound('rock');
+    })
+
+    const paperBtn = document.querySelector('.paper-btn');
+    paperBtn.addEventListener('click', ()=>{
+        playRound('paper');
+    })
+
+    const scissorsBtn = document.querySelector('.scissors-btn');
+    scissorsBtn.addEventListener('click', ()=>{
+        playRound('scissors');
+    })
 }
+
+
+
+
+
+

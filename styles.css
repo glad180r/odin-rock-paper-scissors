@@ -12,11 +12,20 @@ body{
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     background-color: black;
     color: white;
+}
+
+
+.results{
+    margin-bottom: 25px;
+    border: 2px solid white;
+    padding: 25px;
+    border-radius: 4px;
 }
 
 .buttons{
