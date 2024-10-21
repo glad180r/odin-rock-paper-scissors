@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 
 function getComputerChoice(){
     // Randomly chooses the computer's choice from the options: rock, paper, scissors
@@ -13,6 +16,7 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
+    // Prompt the user to enter their choice
     let humanChoice = prompt("Rock, Paper or Scissors?");
     return humanChoice.toLowerCase();
 }
